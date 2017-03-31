@@ -15,3 +15,18 @@ See the demo here at [devcrib.github.io/roksh-encryption-algorithm](https://devc
     [twitter](https://twitter.com/mpdepaule)
 
 ##### Contributors:
+
+
+## Usage
+The library features two main methods: `encrypt()` and `decrypt()` which accept a single value passed by reference.
+
+##### Example
+```php
+$str = "This is a library to facilitate the smooth communication in times of war";
+
+encrypt($str);
+// echo "Encrypted: $str";
+
+decrypt($str);
+// echo "Decrypted: $str";
+```

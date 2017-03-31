@@ -12,8 +12,6 @@
  * the assailants intercepting.
  */
 
-This is a library to facilitate the smooth communication in times of war, between Roksh - the petite village of farmers, and Zrytk - the fairly large village of blacksmiths and hunters Roksh is under massive assault from the four neighbouring villages - Slyek, Doek, Maroek and Groech. Rokshites need to be able to securely pass messages to and from their Zrytk saviours without standing the risk of the assailants intercepting.
-
 /**
  * Performs encryption procedure on input message
  * @param $msg
