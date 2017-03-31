@@ -19,12 +19,12 @@
  * @return string
  */
 function encrypt(&$msg) {
-    $tokens = tokenize($msg);
-    foreach ($tokens as $i => $token)
-    $tokens[$i] = shuffleString($token);
+    doShuffle($msg);
 
-    $msg = strrev(implode(" ", $tokens));
+    $msg = strrev($msg);
     $msg = chunkText( strrev( bin2hex($msg)), 10);
+
+    doShuffle($msg);
 }
 
 /**
@@ -32,16 +32,12 @@ function encrypt(&$msg) {
  * @param $msg
  */
 function decrypt(&$msg) {
+    doShuffle($msg, true);
     deleteSpaces($msg);
 
-    $msg = hex2bin(strrev($msg));
-    $msg = strrev($msg);
+    $msg = strrev(hex2bin(strrev($msg)));
 
-    $tokens = tokenize($msg);
-    foreach ($tokens as $i => $token)
-    $tokens[$i] = shuffleString($token, true);
-
-    $msg = implode(" ", $tokens);
+    doShuffle($msg, true);
 }
 
 /**
@@ -94,4 +90,16 @@ function chunkText($msg, $maxlen = 5) {
  */
 function deleteSpaces(&$msg) {
     $msg = preg_replace("/\s+/", "", $msg);
+}
+
+/**
+ * Performs the shuffling routine on input text, forwards & backwards
+ * @param string $msg
+ * @param boolean [$backwards = false] If true, sets the routine for decryption
+ */
+function doShuffle(&$msg, $backwards = false) {
+    $tokens = tokenize($msg);
+    foreach ($tokens as $i => $token)
+        $tokens[$i] = shuffleString($token, $backwards);
+    $msg = implode(" ", $tokens);
 }
