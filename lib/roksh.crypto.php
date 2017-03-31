@@ -12,6 +12,7 @@
  * the assailants intercepting.
  */
 
+
 /**
  * Performs encryption procedure on input message
  * @param $msg
@@ -20,20 +21,26 @@
 function encrypt(&$msg) {
     $tokens = tokenize($msg);
     foreach ($tokens as $i => $token)
-        $tokens[$i] = shuffleString($token);
+    $tokens[$i] = shuffleString($token);
 
     $msg = strrev(implode(" ", $tokens));
+    $msg = bin2hex($msg);
+    $msg = strrev($msg);
 }
 
 /**
  * Performs decryption procedure on input message
  * @param $msg
  */
+
 function decrypt(&$msg) {
+    $bin = hex2bin(strrev($msg));
+    $msg = $bin;
+
     $msg = strrev($msg);
     $tokens = tokenize($msg);
     foreach ($tokens as $i => $token)
-        $tokens[$i] = shuffleString($token, true);
+    $tokens[$i] = shuffleString($token, true);
 
     $msg = implode(" ", $tokens);
 }
@@ -44,6 +51,7 @@ function decrypt(&$msg) {
  * @param $msg
  * @return array
  */
+
 function tokenize($msg) {
     $tokens = preg_split('/\s+/', $msg);
     return $tokens;
@@ -55,6 +63,7 @@ function tokenize($msg) {
  * @param bool $is_decrypt when true, implements the decryption variant
  * @return string|supplied
  */
+
 function shuffleString(&$str, $is_decrypt = false) {
     $l = strlen($str);
     if ($l == 1) return $str;
