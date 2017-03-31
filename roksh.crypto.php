@@ -12,6 +12,7 @@
  * the assailants intercepting.
  */
 
+
 /**
  * Performs encryption procedure on input message
  * @param $msg
@@ -20,9 +21,10 @@
 function encrypt(&$msg) {
     $tokens = tokenize($msg);
     foreach ($tokens as $i => $token)
-        $tokens[$i] = shuffleString($token);
+    $tokens[$i] = shuffleString($token);
 
     $msg = strrev(implode(" ", $tokens));
+    $msg = chunkText( strrev( bin2hex($msg)), 10);
 }
 
 /**
@@ -30,10 +32,14 @@ function encrypt(&$msg) {
  * @param $msg
  */
 function decrypt(&$msg) {
+    deleteSpaces($msg);
+
+    $msg = hex2bin(strrev($msg));
     $msg = strrev($msg);
+
     $tokens = tokenize($msg);
     foreach ($tokens as $i => $token)
-        $tokens[$i] = shuffleString($token, true);
+    $tokens[$i] = shuffleString($token, true);
 
     $msg = implode(" ", $tokens);
 }
@@ -65,4 +71,27 @@ function shuffleString(&$str, $is_decrypt = false) {
     );
     $val = substr($str, $x) . substr($str, 0, $x);
     return $val;
+}
+
+/**
+ * Spaces out given non-spaced string, breaking it randomly into chunks
+ * @param string $msg
+ */
+function chunkText($msg, $maxlen = 5) {
+    $maxlen = $maxlen <= 0? 5:$maxlen;
+    $txt = "";
+    while ($msg != '') {
+        $r = rand(1, $maxlen);
+        $txt .= substr($msg, 0, $r) . " ";
+        $msg = substr($msg, $r);
+    }
+    return trim($txt);
+}
+
+/**
+ * Deletes all spaces in input text
+ * @param string &$msg
+ */
+function deleteSpaces(&$msg) {
+    $msg = preg_replace("/\s+/", "", $msg);
 }

@@ -1,6 +1,6 @@
 <?php
 
-    require_once "lib/roksh.crypto.php";
+    require_once "roksh.crypto.php";
 
     $story = <<<APPLE
 Once upon a time, there was a beautiful girl named Cinderella. She lived with her wicked stepmother and two stepsisters. They treated Cinderella very badly. One day, they were invited for a grand ball in the king’s palace. But Cinderella’s stepmother would not let her go. Cinderella was made to sew new party gowns for her stepmother and stepsisters, and curl their hair. They then went to the ball, leaving Cinderella alone at home.
@@ -37,8 +37,8 @@ APPLE;
                     <div class="panel-heading">
                         <h3 class="panel-title">Encrypted</h3>
                     </div>
-                    <div class="panel-body" style=" min-height: 5rem; overflow-x:none; overflow-y:auto">
-                        <p><? encrypt($story); printf($story) ?></p>
+                    <div class="panel-body" style="overflow-x:auto">
+                        <? encrypt($story); echo $story ?>
                     </div>
                 </div>
             </div>

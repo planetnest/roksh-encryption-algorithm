@@ -34,10 +34,9 @@ function encrypt(&$msg) {
  */
 
 function decrypt(&$msg) {
-    $bin = hex2bin(strrev($msg));
-    $msg = $bin;
-
+    $msg = hex2bin(strrev($msg));
     $msg = strrev($msg);
+
     $tokens = tokenize($msg);
     foreach ($tokens as $i => $token)
     $tokens[$i] = shuffleString($token, true);
