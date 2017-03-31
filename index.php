@@ -37,8 +37,8 @@ APPLE;
                     <div class="panel-heading">
                         <h3 class="panel-title">Encrypted</h3>
                     </div>
-                    <div class="panel-body">
-                        <? encrypt($story); echo $story ?>
+                    <div class="panel-body" style=" min-height: 5rem; overflow-x:none; overflow-y:auto">
+                        <p><? encrypt($story); printf($story) ?></p>
                     </div>
                 </div>
             </div>
