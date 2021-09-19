@@ -18,5 +18,10 @@
             ".npmignore",
             "**/*.html"
         ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Roksh\\": "src/"
+        }
     }
 }
