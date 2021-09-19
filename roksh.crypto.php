@@ -18,26 +18,28 @@
  * @param $msg
  * @return string
  */
-function encrypt(&$msg) {
+function encrypt($msg) {
     doShuffle($msg);
 
     $msg = strrev($msg);
     $msg = chunkText( strrev( bin2hex($msg)), 10);
 
     doShuffle($msg);
+    return $msg;
 }
 
 /**
  * Performs decryption procedure on input message
  * @param $msg
  */
-function decrypt(&$msg) {
+function decrypt($msg) {
     doShuffle($msg, true);
     deleteSpaces($msg);
 
     $msg = strrev(hex2bin(strrev($msg)));
 
     doShuffle($msg, true);
+    return $msg;
 }
 
 /**
@@ -57,7 +59,7 @@ function tokenize($msg) {
  * @param bool $is_decrypt when true, implements the decryption variant
  * @return string|supplied
  */
-function shuffleString(&$str, $is_decrypt = false) {
+function shuffleString($str, $is_decrypt = false) {
     $l = strlen($str);
     if ($l == 1) return $str;
     $val = "";
