@@ -1,0 +1,12 @@
+{
+    "name": "mofesolapaul/roksh-encryption-algorithm",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mofesola Banjo",
+            "email": "hello@mofesolapaul.com"
+        }
+    ],
+    "require": {}
+}
