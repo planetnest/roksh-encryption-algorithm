@@ -2,7 +2,7 @@
 
 namespace Roksh;
 
-require_once('./roksh.crypto.php');
+require_once('../roksh.crypto.php');
 
 class Roksh
 {
