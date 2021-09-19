@@ -2,8 +2,6 @@
 
 namespace Roksh;
 
-require_once('../roksh.crypto.php');
-
 class Roksh
 {
     public static function encrypt(string $message): string

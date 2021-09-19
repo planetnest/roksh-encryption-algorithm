@@ -20,6 +20,9 @@
         ]
     },
     "autoload": {
+        "files": [
+            "roksh.crypto.php"
+        ],
         "psr-4": {
             "Roksh\\": "src/"
         }
