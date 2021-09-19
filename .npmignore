@@ -1,0 +1,4 @@
+.vscode/
+**/*.php
+**/*.html
+tmp.js
