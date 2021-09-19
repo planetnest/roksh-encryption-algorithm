@@ -8,5 +8,15 @@
             "email": "hello@mofesolapaul.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "archive": {
+        "exclude": [
+            "**/*.js",
+            "tmp.php",
+            ".vscode/",
+            "package.json",
+            ".npmignore",
+            "**/*.html"
+        ]
+    }
 }
